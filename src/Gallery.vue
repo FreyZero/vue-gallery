@@ -22,23 +22,27 @@
             </p>
             <div id="columns">
                 <div v-for="(obj,index) in postArray" :key="index" class="post">
-                    <div class="box" style="margin-top:10px;margin-bottom:10px">
-                        <article class="media">
-                            <div class="media-left">
+                    <div class="card">
+                        <div class="card-image">
                             <figure class="image inbox">
-                                <img :src="obj.imgURL" alt="Image" >
+                                <img :src="obj.imgURL" alt="Placeholder image">
                             </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">BNK48</p>
+                                    <p class="subtitle is-6">index@{{index}}</p>
+                                </div>
                             </div>
-                            <div class="media-content">
                             <div class="content">
-                                <p>
-                                <strong>John Smith</strong> <small>@johnsmith</small> <small>index: {{index}}</small>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                                <a href="#">#css</a> <a href="#">#responsive</a>
                                 <br>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                                </p>
+                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                             </div>
-                            </div>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,11 +138,11 @@ export default {
 <style scoped>
     .inbox {
         height: auto;
-        width: 128px;
+        width: "100%";
     }
     #columns {
-        column-width: 26vw;
-        -moz-column-width: 26vw;
+        column-width: 15vw;
+        -moz-column-width: 15vw;
         column-gap: 15px;
         width: 100%;
         /* max-width: 1100px; */
@@ -146,6 +150,11 @@ export default {
     }
     .post{
         cursor: pointer;
+        margin-bottom: 10px;
+        -webkit-column-break-inside: avoid; /* Chrome, Safari */
+        page-break-inside: avoid;           /* Theoretically FF 20+ */
+        break-inside: avoid-column;         /* IE 11 */
+        display:table;                      /* Actually FF 20+ */
     }
 </style>
 
