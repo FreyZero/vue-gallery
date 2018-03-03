@@ -1,25 +1,17 @@
 <template>
   <div class="container">
-
-      <div class="container" style="margin-top:15px">
-          <input @change="onFileSelect" type="file">
-          <button @click="onUpload" class="button is-primary">Upload</button>
-          <button @click="testPromise" class="button is-danger">Test</button>
-      </div>
-      <div class="container">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-              when an unknown printer took a galley of type and scrambled it to make a type 
-              specimen book. It has survived not only five centuries, but also the leap into 
-              electronic typesetting, remaining essentially unchanged. It was popularised in 
-              the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-              and more recently with desktop publishing software like Aldus PageMaker 
-              including versions of Lorem Ipsum.
-            </p>
-
-            <p class='box'>
-                Response: {{ resData }}
-            </p>
+        <div class='box' style="margin-top:10px;">
+                <textarea placeholder="Picture content..." class="textarea" rows=1 style="display:inline-block"></textarea>
+                <button @click="onUpload" class="button is-primary" style="float:right;display:inline-block">Post</button>
+        </div>
+        
+        <section class="section">  
+        <div class="container" style="margin-top:15px">
+            <input @change="onFileSelect" type="file">
+            
+        </div>
+        </section>
+        <div class="container">
             <div id="columns">
                 <div v-for="(obj,index) in postArray" :key="index" class="post">
                     <div class="card">
@@ -30,7 +22,7 @@
                         </div>
                         <div class="card-content">
                             <div class="media">
-                                <div class="media-content">
+                                <div class="">
                                     <p class="title is-4">BNK48</p>
                                     <p class="subtitle is-6">index@{{index}}</p>
                                 </div>
@@ -156,6 +148,16 @@ export default {
         break-inside: avoid-column;         /* IE 11 */
         display:table;                      /* Actually FF 20+ */
     }
+    .card{
+        border-color: thistle;
+        filter: drop-shadow(0px 0px 3px thistle);
+        border-radius: 7px;
+    }
+    img{
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+    
 </style>
 
 
