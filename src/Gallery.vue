@@ -36,43 +36,45 @@
     </section>
     <div class="container">
       <div id="columns">
-        <div class="post shadow">
-          <div class="card ">
-            <div class="card-image">
-              <figure class="image inbox">
-                <img id="uploadImg" src="./assets/Add-Icon-5.png" @click="$refs.fileInput.click()" alt="Placeholder image" style="cursor:pointer">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="">
-                  <input class="title is-4 input" placeholder="TOPIC">
-                  <div @click="triggerDropdown()" :class="activeClass" class="dropdown" style="width:100%">
-                    <div class="dropdown-trigger" style="width:100%">
-                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" style="width:100%">
-                        <span>{{selectedMember}}</span>
-                      </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                      <div class="dropdown-content">
-                        <a v-for="(i, index) in dropdownArray" :key=index @click="selectedMember=i" :class="activeItem" class="dropdown-item">
-                          {{i}}
-                        </a>
+        <transition name="bounce">
+          <div v-if="isShow" class="post shadow">
+            <div class="card ">
+              <div class="card-image">
+                <figure class="image inbox">
+                  <img id="uploadImg" src="./assets/Add-Icon-5.png" @click="$refs.fileInput.click()" alt="Placeholder image" style="cursor:pointer">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="">
+                    <input class="title is-4 input" placeholder="TOPIC">
+                    <div @click="triggerDropdown()" :class="activeClass" class="dropdown" style="width:100%">
+                      <div class="dropdown-trigger" style="width:100%">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" style="width:100%">
+                          <span>{{selectedMember}}</span>
+                        </button>
+                      </div>
+                      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                          <a v-for="(i, index) in dropdownArray" :key=index @click="selectedMember=i" :class="activeItem" class="dropdown-item">
+                            {{i}}
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="content">
-                <textarea rows="5" class="textarea"></textarea>
-                <br>
-                <time datetime="2016-1-1">{{ dateandtime }}</time>
-                <br><br>
-                <button @click="onUpload" class="button is-primary" style="width:100%">Post</button>
+                <div class="content">
+                  <textarea rows="5" class="textarea"></textarea>
+                  <br>
+                  <time datetime="2016-1-1">{{ dateandtime }}</time>
+                  <br><br>
+                  <button @click="onUpload" class="button is-primary" style="width:100%">Post</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </transition>
         <div v-for="(obj,index) in postArray" :key="index" class="post shadow" style="z-index:-1">
           <div class="card ">
             <div class="card-image">
@@ -108,6 +110,7 @@
   import _ from 'lodash'
 
   export default {
+    props: ['isShow'],
     data() {
       return {
         resData: 'Waiting for response data',
@@ -233,6 +236,10 @@
     filter: drop-shadow(0px 0px .3rem #00d1b2);
   }
 
+  .post {
+    overflow: hidden;
+  }
+
   .card {
     border-radius: .7rem;
   }
@@ -311,5 +318,20 @@
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
   }
-
+  .bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    /* transform: translateY(-100%); */
+  }
+  100% {
+    /* transform: translateY(0); */
+    transform: scale(1);
+  }
+}
 </style>

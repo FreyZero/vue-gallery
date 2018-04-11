@@ -1,7 +1,7 @@
 <template>
   <div>
-    <app-header></app-header>
-    <app-gallery id="ss"></app-gallery>
+    <app-header :isShow="isShow" @toggleCard="isShow=$event"></app-header>
+    <app-gallery :isShow="isShow"></app-gallery>
     <app-footer></app-footer>
   </div>
 </template>
@@ -12,6 +12,11 @@
   import Footer from './Footer'
 
   export default {
+    data() {
+      return {
+        isShow: false
+      }
+    },
     components : {
       appHeader : Header,
       appGallery : Gallery,

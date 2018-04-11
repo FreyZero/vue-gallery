@@ -64,11 +64,11 @@
                   </a>
                 </p>
                 <p class="control">
-                  <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.1.zip">
+                  <a @click="addImage()" class="button is-primary" href="#p">
                     <span class="icon">
-                      <i class="fas fa-download"></i>
+                      <i class="fas fa-plus-circle"></i>
                     </span>
-                    <span>Download</span>
+                    <span>Add Image</span>
                   </a>
                 </p>
               </div>
@@ -82,7 +82,18 @@
 
 <script>
 export default {
-  
+  data() {
+    return {
+      isShow: false
+    }
+  },
+  methods: {
+    addImage() {
+      this.isShow = !this.isShow
+      this.$emit('toggleCard',this.isShow)
+      console.log(this.isShow)
+    }
+  },
 }
 </script>
 
