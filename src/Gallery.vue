@@ -100,6 +100,9 @@
           </div>
         </div>
       </div>
+      <a href="#" class="float">
+        <i class="fas fa-plus-circle my-float"></i>
+      </a>
     </div>
   </div>
 </template>
@@ -128,7 +131,8 @@
         activeItem: "",
         dateandtime: new Date().toLocaleString(),
         filePath: './assets/',
-        fileName: 'Add-Icon-5.png'
+        fileName: 'Add-Icon-5.png',
+        imgb: 'Add-Icon-5.png'
       }
     },
     methods: {
@@ -266,6 +270,23 @@
     height: 4.5em;
   }
 
+  .float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#0C9;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+  }
+
+  .my-float{
+    margin-top:22px;
+  }
+
   @media only screen and (max-width: 600px) {
     body {
       font-size: 75%;
@@ -297,6 +318,21 @@
   }
 
   @media only screen and (min-width: 1089px) {
+    body {
+      font-size: 100%;
+    }
+    #columns {
+      column-width: 17vw;
+      -moz-column-width: 17vw;
+      -webkit-column-width: 17vw;
+      column-gap: 1.5rem;
+      width: 95%;
+      /* max-width: 1100px; */
+      margin: 0 auto;
+    }
+  }
+
+  @media only screen and (min-width: 1700px) {
     body {
       font-size: 100%;
     }
