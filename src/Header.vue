@@ -11,7 +11,7 @@
         <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="#">
-              Home
+              Branch Dev
             </a>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="/documentation/overview/start/">
